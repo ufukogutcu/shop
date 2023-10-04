@@ -26,6 +26,9 @@ class MyUserManager(BaseUserManager):
         user.save()
 
 class MyUser(AbstractBaseUser, PermissionsMixin):
+    class Meta:
+        verbose_name_plural = "users"
+
     id = models.AutoField(primary_key=True)
     email = models.EmailField(max_length=50, unique=True)
     is_staff = models.BooleanField(default=False)
@@ -39,5 +42,8 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
         return self.email
     
 class Address(models.Model):
+    class Meta:
+        verbose_name_plural = "addresses"
+
     pass
     
