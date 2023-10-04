@@ -45,5 +45,10 @@ class Address(models.Model):
     class Meta:
         verbose_name_plural = "addresses"
 
-    pass
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    address = models.CharField(max_length=200, null=True)
+    city = models.CharField(max_length=200, null=True)
+    state = models.CharField(max_length=200, null=True)
+    zipcode = models.CharField(max_length=200, null=True)
+    default = models.BooleanField(default=False)
     
