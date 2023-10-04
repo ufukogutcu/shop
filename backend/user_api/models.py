@@ -22,6 +22,7 @@ class MyUserManager(BaseUserManager):
             raise ValueError('A password is required.')
         
         user = self.create_user(email, password)
+        user.is_staff = True
         user.is_superuser = True
         user.save()
 
@@ -32,8 +33,6 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True)
     email = models.EmailField(max_length=50, unique=True)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = MyUserManager()
