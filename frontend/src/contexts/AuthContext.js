@@ -56,7 +56,7 @@ export function AuthProvider({children}) {
                 setCurrentUser()
             }).catch((error) => {
                 console.log(error)
-            })
+        })
     }
 
     useEffect(() => {
